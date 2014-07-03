@@ -15,6 +15,7 @@ AngularRails::Application.routes.draw do
   resources :home
   resources :movie
   resources :projects
+  resources :tasks
   # Sample resource route with options:
   #   resources :products do
   #     member do

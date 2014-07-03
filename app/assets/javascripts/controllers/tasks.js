@@ -1,6 +1,6 @@
-function TasksCtrl($scope, Projects) {
+function TasksCtrl($scope, Tasks) {
     "use strict";
-    $scope.projects = Tasks.index();
+    $scope.tasks = Tasks.index();
 }
 
 function TaskShowCtrl($scope, $location, $routeParams, $dialog, Task) {"use strict";
@@ -34,9 +34,12 @@ function TaskShowCtrl($scope, $location, $routeParams, $dialog, Task) {"use stri
     };
 }
 
-function TaskAddCtrl($scope, $location, Tasks, Task) {
+function TaskAddCtrl($scope, $location, $http ,Tasks, Task) {
     "use strict";
     $scope.task = {};
+    $scope.projects =  $http.get('/projects.json');
+    console.log("sasaghdgadsaj");
+    console.log($scope.projects);
     $scope.create = function(task) {
         var taskService = new Tasks(task);
         taskService.$create(function(task) {

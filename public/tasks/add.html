@@ -4,6 +4,11 @@
 		<label>Task Title:</label>
 		<input name="tasktitle" type="text" placeholder="Enter Your Task Title" ng-model="task.title" required/>
 		<span ng-show="addTaskForm.tasktitle.$error.required" class="help-inline">Required</span>
+		<label>Project</label>
+		<select ng-model="pjctid" ng-options="project.title for project in projects">
+      			<option value="">-- Select Project --</option>
+    	</select>
+		<span ng-show="addTaskForm.tasktitle.$error.required" class="help-inline">Required</span>
 		<label>Description</label>
 		<input class="input-xxlarge" type="text" ng-model='task.description'/>
 		<button type="submit" class="btn btn-primary" ng-click="create(task)" ng-disabled="addTaskForm.$invalid">Submit</button>

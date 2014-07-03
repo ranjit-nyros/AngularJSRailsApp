@@ -1,5 +1,6 @@
-<h1>Projects</h1>
+<h1>Projects</h1> 
 <a href="/#projects/add"  class="pull-right btn btn-mini btn-primary" style="margin-top:-36px;">Add Project</a>
+<input placeholder = "Search", ng-model="searchText"  class="pull-right" style="margin-top:-36px;margin-right:10%;"/>
 
 <div ng-show = 'projects == 0' class="well">
   No Projects found.
@@ -14,17 +15,11 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="project in projects">
-			<td><a href="#/project/{{project.id}}">{{project.title}}</a></td>
+		<tr ng-repeat="project in projects | filter:searchText">
+			<td><a href="#/projects/{{project.id}}">{{project.title}}</a></td>
 			<td>{{project.description}}</td>
 		</tr>
 	</tbody>
 	
 </table>
 </div>
-
-<!-- <div class="willPaginate"
-     data-params="willPaginateCollection"
-     data-on-click="getPage"
-     data-config="willPaginateConfig"></div>  -->
-
