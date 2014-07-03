@@ -1,0 +1,8 @@
+<div>
+	<p>Task Id: {{task.id}}</p>
+	<p>Task Title: {{task.title}}</p>
+	<p>Task Description: {{task.description}}</p>
+</div>
+<a class='btn' href="#/tasks/{{task.id}}/edit">Edit</a>
+<button type="input" class="btn btn-danger" ng-click='remove(task.id)'>Delete</button>
+

@@ -1,0 +1,30 @@
+<h1>Projects</h1>
+<a href="/#projects/add"  class="pull-right btn btn-mini btn-primary" style="margin-top:-36px;">Add Project</a>
+
+<div ng-show = 'projects == 0' class="well">
+  No Projects found.
+</div>
+<div ng-hide = 'projects == 0' class="well">
+<table class="table table-condensed table-hover">
+	
+	<thead>
+		<tr>
+			<th>Project Title</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="project in projects">
+			<td><a href="#/project/{{project.id}}">{{project.title}}</a></td>
+			<td>{{project.description}}</td>
+		</tr>
+	</tbody>
+	
+</table>
+</div>
+
+<!-- <div class="willPaginate"
+     data-params="willPaginateCollection"
+     data-on-click="getPage"
+     data-config="willPaginateConfig"></div>  -->
+

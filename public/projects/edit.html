@@ -1,0 +1,12 @@
+<form name="editProjectForm">
+	<fieldset>
+		<legend>Edit {{master.name}}</legend>
+		<label>Project Title<label>
+		<input name="projecttitle" type="text" placeholder="Enter your project title.." ng-model='project.title' required/>
+		<span ng-show="editProjectForm.projecttitle.$error.required" class="help-inline">Required</span>
+		<label>Description</label>
+		<input class="input-xxlarge" type="text" ng-model='project.description'/>
+		<button type="submit" class="btn btn-primary" ng-click='update(project)' ng-disabled="editProjectForm.$invalid">Update Project</button>
+	</fieldset>
+</form>
+<a href="#/projects/{{project.id}}">Back</a>

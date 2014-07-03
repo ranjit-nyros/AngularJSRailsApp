@@ -1,0 +1,25 @@
+<h1>Tasks</h1>
+<a href="/#tasks/add"  class="pull-right btn btn-mini btn-primary" style="margin-top:-36px;">Add Task</a>
+
+<div ng-show = 'tasks == 0' class="well">
+  No Tasks found.
+</div>
+<div ng-hide = 'tasks == 0' class="well">
+<table class="table table-condensed table-hover">
+	
+	<thead>
+		<tr>
+			<th>Task Title</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="task in tasks">
+			<td><a href="#/task/{{task.id}}">{{task.title}}</a></td>
+			<td>{{task.description}}</td>
+		</tr>
+	</tbody>
+	
+</table>
+</div>
+

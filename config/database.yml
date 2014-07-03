@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: angjune24
+  pool: 5
+  username: postgres
+  password: root
+  host: localhost
+  port: 5432

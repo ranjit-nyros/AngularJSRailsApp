@@ -1,0 +1,12 @@
+<form name="editTaskForm">
+	<fieldset>
+		<legend>Edit {{master.name}}</legend>
+		<label>Task Title<label>
+		<input name="tasktitle" type="text" placeholder="Enter your task title.." ng-model='task.title' required/>
+		<span ng-show="editTaskForm.tasktitle.$error.required" class="help-inline">Required</span>
+		<label>Description</label>
+		<input class="input-xxlarge" type="text" ng-model='task.description'/>
+		<button type="submit" class="btn btn-primary" ng-click='update(task)' ng-disabled="editTaskForm.$invalid">Update Task</button>
+	</fieldset>
+</form>
+<a href="#/tasks/{{task.id}}">Back</a>
