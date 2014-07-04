@@ -5,10 +5,14 @@
 		<input name="tasktitle" type="text" placeholder="Enter Your Task Title" ng-model="task.title" required/>
 		<span ng-show="addTaskForm.tasktitle.$error.required" class="help-inline">Required</span>
 		<label>Project</label>
-		<select ng-model="pjctid" ng-options="project.title for project in projects">
-      			<option value="">-- Select Project --</option>
-    	</select>
-		<span ng-show="addTaskForm.tasktitle.$error.required" class="help-inline">Required</span>
+		<!--<select ng-model="task.project_id" ng-options="project.id as project.title for project in projects">
+
+      			<option value="">Select Project</option>
+    	</select> -->
+    	<select ng-model="task.project_id" required>
+    	<option value="">Select Project</option>
+   			<option ng-repeat="project in projects" value="{{project.id}}" >{{project.title}}</option>
+		</select>
 		<label>Description</label>
 		<input class="input-xxlarge" type="text" ng-model='task.description'/>
 		<button type="submit" class="btn btn-primary" ng-click="create(task)" ng-disabled="addTaskForm.$invalid">Submit</button>

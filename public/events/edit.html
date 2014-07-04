@@ -1,0 +1,11 @@
+<form name="editEventForm">
+	<fieldset>
+		<legend>Edit {{master.name}}</legend>
+		<label>Event Title<label>
+		<input name="eventtitle" type="text" placeholder="Enter your event title.." ng-model='event.title' required/>
+		<span ng-show="editEventForm.eventtitle.$error.required" class="help-inline">Required</span>
+
+		<button type="submit" class="btn btn-primary" ng-click='update(event)' ng-disabled="editEventForm.$invalid">Update Event</button>
+	</fieldset>
+</form>
+<a href="#/events/{{event.id}}">Back</a>

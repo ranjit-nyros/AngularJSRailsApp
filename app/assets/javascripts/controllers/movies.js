@@ -1,6 +1,8 @@
 function MoviesCtrl($scope, Movies) {
     "use strict";
+    
     $scope.movies = Movies.index();
+
 }
 
 function MovieShowCtrl($scope, $location, $routeParams, $dialog, Movie) {"use strict";

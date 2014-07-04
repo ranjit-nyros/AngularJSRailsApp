@@ -1,0 +1,18 @@
+<form name="addEventForm">
+	<fieldset>
+		<legend>Add a event</legend>
+		<label>Event Title:</label>
+		<input name="eventtitle" type="text" placeholder="Enter Your  Title" ng-model="event.title" required/>
+		<span ng-show="addEventForm.eventtitle.$error.required" class="help-inline">Required</span>
+		<br/>
+		<label>Event Title:</label>
+		<!--<select size="3" id="myorganizers" multiple ng-multiple="true" ng-model="selectedorganizers" ng-options="c.id as c.name for c in organizers"></select> -->
+		<select size="3" id="myorganizers" multiple ng-multiple="true" ng-model="selectedorganizers" name="organizing_team"> 
+    	
+   			<option ng-repeat="c in organizers" value="{{c.id}}" >{{c.name}}</option>
+		</select>
+		<br/>
+
+		<button type="submit" class="btn btn-primary" ng-click="create(event)" ng-disabled="addEventForm.$invalid">Submit</button>
+	</fieldset>
+</form>

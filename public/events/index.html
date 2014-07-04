@@ -1,0 +1,24 @@
+<h1>Events</h1>
+<a href="/#events/add"  class="pull-right btn btn-mini btn-primary" style="margin-top:-36px;">Add event</a>
+
+<div ng-show = 'events == 0' class="well">
+  No events found.
+</div>
+<div ng-hide = 'events == 0' class="well">
+<table class="table table-condensed table-hover">
+	
+	<thead>
+		<tr>
+			<th>Event Title</th>
+			
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="event in events">
+			<td><a href="#/events/{{event.id}}">{{event.title}}</a></td>
+			
+		</tr>
+	</tbody>
+	
+</table>
+</div>

@@ -1,0 +1,10 @@
+<form name="addOrganizerForm">
+	<fieldset>
+		<legend>Add Organizer</legend>
+		<label>Name:</label>
+		<input name="organizername" type="text" placeholder="Enter name.." ng-model='organizer.name' required/>
+		<span ng-show="addOrganizerForm.organizername.$error.required" class="help-inline">Required</span>
+
+		<button type="submit" class="btn btn-primary" ng-click="create(organizer)" ng-disabled="addOrganizerForm.$invalid">Submit</button>
+	</fieldset>
+</form>

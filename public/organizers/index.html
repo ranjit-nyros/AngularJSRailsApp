@@ -1,0 +1,25 @@
+<h1>Organizers</h1>
+<a href="/#organizers/add"  class="pull-right btn btn-mini btn-primary" style="margin-top:-36px;">Add Organizer</a>
+
+<div ng-show = 'organizers == 0' class="well">
+  No Organizers found.
+</div>
+<div ng-hide = 'organizers == 0' class="well">
+<table class="table table-condensed table-hover">
+	
+	<thead>
+		<tr>
+			<th>Organizer Name</th>
+			
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="organizer in organizers">
+			<td><a href="#/organizers/{{organizer.id}}">{{organizer.name}}</a></td>
+			
+		</tr>
+	</tbody>
+	
+</table>
+</div>
+
