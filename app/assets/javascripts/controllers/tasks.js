@@ -48,10 +48,11 @@ function TaskAddCtrl($scope, $location, $http ,Tasks, Task,Projects) {
     }
 }
 
-function TaskEditCtrl($scope, $routeParams, $location, $http,Task) {
+function TaskEditCtrl($scope, $routeParams, $location, $http,Task,Projects) {
     "use strict";
     
     $scope.master = {};
+    $scope.projects =  Projects.query();
     var task_id = $routeParams.task_id;
     $scope.task = Task.show({
         task_id : task_id

@@ -1,9 +1,8 @@
 development:
-  adapter: postgresql
-  encoding: unicode
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
   database: angjune24
   pool: 5
-  username: postgres
+  username: root
   password: root
-  host: localhost
-  port: 5432
