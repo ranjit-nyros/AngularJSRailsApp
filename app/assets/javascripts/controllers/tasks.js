@@ -7,7 +7,9 @@ function TasksCtrl($scope, Tasks) {
 function TaskShowCtrl($scope, $location, $routeParams, $dialog,$http, Task) {"use strict";
     $scope.task = Task.show({
         task_id : $routeParams.task_id
-    });
+    },function(data){
+    $scope.pjct = Project.show({project_id : data.project_id});
+     });
     
     $scope.remove = function(id) {
         var title = 'Delete Task?', msg = 'Are you sure you want to delete this Task?', btns = [{
