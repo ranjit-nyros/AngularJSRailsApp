@@ -1,9 +1,9 @@
-function OrganizersCtrl($scope, Organizers) {
+function OrganizersCtrl($scope, Organizers, Session) {
     "use strict";
     $scope.organizers = Organizers.index();
 }
 
-function OrganizerShowCtrl($scope, $location, $routeParams, $dialog, Organizer) {"use strict";
+function OrganizerShowCtrl($scope, $location, $routeParams, $dialog, Organizer, Session) {"use strict";
     $scope.organizer = Organizer.show({
         organizer_id : $routeParams.organizer_id
     });
@@ -34,7 +34,7 @@ function OrganizerShowCtrl($scope, $location, $routeParams, $dialog, Organizer) 
     };
 }
 
-function OrganizerAddCtrl($scope, $location, Organizers, Organizer) {
+function OrganizerAddCtrl($scope, $location, Organizers, Organizer, Session) {
     "use strict";
     $scope.organizer = {};
     $scope.create = function(organizer) {
@@ -45,7 +45,7 @@ function OrganizerAddCtrl($scope, $location, Organizers, Organizer) {
     }
 }
 
-function OrganizerEditCtrl($scope, $routeParams, $location, Organizer) {
+function OrganizerEditCtrl($scope, $routeParams, $location, Organizer, Session) {
     "use strict";
     
     $scope.master = {};

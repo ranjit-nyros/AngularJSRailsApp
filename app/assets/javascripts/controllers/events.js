@@ -1,9 +1,9 @@
-function EventsCtrl($scope, Events) {
+function EventsCtrl($scope, Events, Session) {
     "use strict";
     $scope.events = Events.index();
 }
 
-function EventShowCtrl($scope, $location, $routeParams, $dialog, Event) {"use strict";
+function EventShowCtrl($scope, $location, $routeParams, $dialog, Event, Session) {"use strict";
     $scope.event = Event.show({
         event_id : $routeParams.event_id
     });
@@ -34,7 +34,7 @@ function EventShowCtrl($scope, $location, $routeParams, $dialog, Event) {"use st
     };
 }
 
-function EventAddCtrl($scope, $location,$http ,Events, Event,Organizers) {
+function EventAddCtrl($scope, $location,$http ,Events, Event,Organizers, Session) {
     "use strict";
     $scope.event = {};
     $scope.organizers = Organizers.query();
@@ -47,7 +47,7 @@ function EventAddCtrl($scope, $location,$http ,Events, Event,Organizers) {
     }
 }
 
-function EventEditCtrl($scope, $routeParams, $location, Event) {
+function EventEditCtrl($scope, $routeParams, $location, Event, Session) {
     "use strict";
     
     $scope.master = {};

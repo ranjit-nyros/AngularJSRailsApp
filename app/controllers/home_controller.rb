@@ -1,6 +1,8 @@
 class HomeController < ApplicationController
   #http_basic_authenticate_with :name => "steve", :password => "secret", :except => :login
-  before_filter :authenticate #, :only => [:index]
+  #before_filter :authenticate #, :only => [:index]
+  before_filter :authenticate_user!
+  
 
   #respond_to :html
   def index

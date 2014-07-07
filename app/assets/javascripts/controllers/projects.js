@@ -1,9 +1,22 @@
-function ProjectsCtrl($scope, Projects) {
+function ProjectsCtrl($scope, Projects,ngTableParams, Session) {
     "use strict";
+    $scope.user = Session.requestCurrentUser();
     $scope.projects = Projects.index();
+    $scope.logout = function() {
+        Session.logout();
+    };
+    // $scope.tableParams = new ngTableParams({
+    //             pdescrption: 1,            // show first pdescrption
+    //             count: 3           // count per pdescrption
+    //         }, {
+    //             total: $scope.projects.length, // length of data
+    //             getData: function($defer, params) {
+    //                 $defer.resolve($scope.projects.slice((params.pdescrption() - 1) * params.count(), params.pdescrption() * params.count()));
+    //             }
+    //         });
 }
 
-function ProjectShowCtrl($scope, $location, $routeParams, $dialog, Project) {"use strict";
+function ProjectShowCtrl($scope, $location, $routeParams, $dialog, Project, Session) {"use strict";
     $scope.project = Project.show({
         project_id : $routeParams.project_id
     });
@@ -18,7 +31,7 @@ function ProjectShowCtrl($scope, $location, $routeParams, $dialog, Project) {"us
             cssClass : 'btn-primary'
         }];
 
-        $dialog.messageBox(title, msg, btns).open().then(function(result) {
+        $dialog.messdescrptionBox(title, msg, btns).open().then(function(result) {
             if (result === 'ok') {
                 Project.destroy({
                     project_id : id
@@ -34,7 +47,7 @@ function ProjectShowCtrl($scope, $location, $routeParams, $dialog, Project) {"us
     };
 }
 
-function ProjectAddCtrl($scope, $location, Projects, Project) {
+function ProjectAddCtrl($scope, $location, Projects, Project, Session) {
     "use strict";
     $scope.project = {};
     $scope.create = function(project) {
@@ -45,7 +58,7 @@ function ProjectAddCtrl($scope, $location, Projects, Project) {
     }
 }
 
-function ProjectEditCtrl($scope, $routeParams, $location, Project) {
+function ProjectEditCtrl($scope, $routeParams, $location, Project, Session) {
     "use strict";
     
     $scope.master = {};
@@ -64,55 +77,3 @@ function ProjectEditCtrl($scope, $routeParams, $location, Project) {
         });
     }
 }
-
-
-   // pagination 
-  // $scope.itemsPerPage = 5;
-  // $scope.currentPage = 0;
-  // $scope.projects = [];
-  
-
-  //  $scope.range = function() {
-  //   var rangeSize = 5;
-  //   var ret = [];
-  //   var start;
-
-  //   start = $scope.currentPage;
-  //   if ( start > $scope.pageCount()-rangeSize ) {
-  //     start = $scope.pageCount()-rangeSize+1;
-  //   }
-
-  //   for (var i=start; i<start+rangeSize; i++) {
-  //     ret.push(i);
-  //   }
-  //   return ret;
-  // };
-
-  // $scope.prevPage = function() {
-  //   if ($scope.currentPage > 0) {
-  //     $scope.currentPage--;
-  //   }
-  // };
-
-  // $scope.prevPageDisabled = function() {
-  //   return $scope.currentPage === 0 ? "disabled" : "";
-  // };
-
-  // $scope.pageCount = function() {
-  //   return Math.ceil($scope.projects.length/$scope.itemsPerPage)-1;
-  // };
-
-  // $scope.nextPage = function() {
-  //   if ($scope.currentPage < $scope.pageCount()) {
-  //     $scope.currentPage++;
-  //   }
-  // };
-
-  // $scope.nextPageDisabled = function() {
-  //   return $scope.currentPage === $scope.pageCount() ? "disabled" : "";
-  // };
-
-  // $scope.setPage = function(n) {
-  //   $scope.currentPage = n;
-  // };
-// end for pagination 

@@ -13,13 +13,37 @@
 //= require services/eventsService
 //= require controllers/events
 //= require angular-will-paginate
+//= require ng-table
+//= require services/sessionService
+//= require controllers/users
 
-angular.module('AngularRails', ['moviesService', 'projectsService','tasksService','organizersService','eventsService','ui.bootstrap','willPaginate'])
-  .config(['$httpProvider', function(provider){
-    provider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
+angular.module('AngularRails', ['sessionService','moviesService', 'projectsService','tasksService','organizersService','eventsService','ui.bootstrap','ngTable'])
+  .config(['$httpProvider', function($httpProvider){
+        $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
+
+        var interceptor = ['$location', '$rootScope', '$q', function($location, $rootScope, $q) {
+            function success(response) {
+                return response
+            };
+
+            function error(response) {
+                if (response.status == 401) {
+                    $rootScope.$broadcast('event:unauthorized');
+                    $location.path('/users/login');
+                    return response;
+                };
+                return $q.reject(response);
+            };
+
+            return function(promise) {
+                return promise.then(success, error);
+            };
+        }];
+        $httpProvider.responseInterceptors.push(interceptor);
   }])
   .config(['$routeProvider', function(router){
     router
+      //.when('/', {templateUrl:'/home/index.html'})
       .when('/movies', {templateUrl:'/movies/index.html', controller:MoviesCtrl})
       .when('/movies/add', {templateUrl:'/movies/add.html', controller: MovieAddCtrl})
       .when('/movies/:movie_id', {templateUrl:'/movies/show.html', controller:MovieShowCtrl})
@@ -40,5 +64,7 @@ angular.module('AngularRails', ['moviesService', 'projectsService','tasksService
       .when('/events/add', {templateUrl:'/events/add.html', controller: EventAddCtrl})
       .when('/events/:event_id', {templateUrl:'/events/show.html', controller:EventShowCtrl})
       .when('/events/:event_id/edit', {templateUrl:'/events/edit.html', controller: EventEditCtrl})
+      .when('/users/login', {templateUrl:'/users/login.html', controller:UsersCtrl})
+      .when('/users/register', {templateUrl:'/users/register.html', controller:UsersCtrl})
       .otherwise({redirectTo: '/projects'});
   }]);

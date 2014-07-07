@@ -1,11 +1,11 @@
-function MoviesCtrl($scope, Movies) {
+function MoviesCtrl($scope, Movies, Session) {
     "use strict";
     
     $scope.movies = Movies.index();
 
 }
 
-function MovieShowCtrl($scope, $location, $routeParams, $dialog, Movie) {"use strict";
+function MovieShowCtrl($scope, $location, $routeParams, $dialog, Movie, Session) {"use strict";
     $scope.movie = Movie.show({
         movie_id : $routeParams.movie_id
     });
@@ -36,7 +36,7 @@ function MovieShowCtrl($scope, $location, $routeParams, $dialog, Movie) {"use st
     };
 }
 
-function MovieAddCtrl($scope, $location, Movies, Movie) {
+function MovieAddCtrl($scope, $location, Movies, Movie, Session) {
     "use strict";
     $scope.movie = {};
     $scope.create = function(movie) {
@@ -47,7 +47,7 @@ function MovieAddCtrl($scope, $location, Movies, Movie) {
     }
 }
 
-function MovieEditCtrl($scope, $routeParams, $location, Movie) {
+function MovieEditCtrl($scope, $routeParams, $location, Movie, Session) {
     "use strict";
     
     $scope.master = {};

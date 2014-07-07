@@ -1,10 +1,10 @@
-function TasksCtrl($scope, Tasks) {
+function TasksCtrl($scope, Tasks, Session) {
     "use strict";
     $scope.tasks = Tasks.index();
 
 }
 
-function TaskShowCtrl($scope, $location, $routeParams, $dialog,$http, Task,Project) {"use strict";
+function TaskShowCtrl($scope, $location, $routeParams, $dialog,$http, Task,Project, Session) {"use strict";
     $scope.task = Task.show({
         task_id : $routeParams.task_id
     },function(data){
@@ -36,7 +36,7 @@ function TaskShowCtrl($scope, $location, $routeParams, $dialog,$http, Task,Proje
     };
 }
 
-function TaskAddCtrl($scope, $location, $http ,Tasks, Task,Projects) {
+function TaskAddCtrl($scope, $location, $http ,Tasks, Task,Projects, Session) {
     "use strict";
     $scope.task = {};
     $scope.projects =  Projects.query();
@@ -48,7 +48,7 @@ function TaskAddCtrl($scope, $location, $http ,Tasks, Task,Projects) {
     }
 }
 
-function TaskEditCtrl($scope, $routeParams, $location, $http,Task,Projects) {
+function TaskEditCtrl($scope, $routeParams, $location, $http,Task,Projects, Session) {
     "use strict";
     
     $scope.master = {};
