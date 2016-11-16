@@ -2,6 +2,7 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
+  host: 203.193.173.123
   database: angjuly7
   pool: 5
   username: root
@@ -10,6 +11,7 @@ development:
 production:
   adapter: mysql2
   encoding: utf8
+  host: 203.193.173.123  
   reconnect: false
   database: angjuly7
   pool: 5
@@ -19,6 +21,7 @@ production:
 test:
   adapter: mysql2
   encoding: utf8
+  host: 203.193.173.123  
   reconnect: false
   database: angjuly7
   pool: 5
